@@ -47,7 +47,9 @@
 	var angular = __webpack_require__(1);
 	var app = angular.module('app', []);
 
-	console.log(app);
+	__webpack_require__(5)(app);
+	__webpack_require__(3)(app);
+
 
 /***/ },
 /* 1 */
@@ -26370,6 +26372,51 @@
 	})(window, document);
 
 	!window.angular.$$csp() && window.angular.element(document).find('head').prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}</style>');
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function (app) {
+	  __webpack_require__(4)(app);
+	};
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function (app) {
+	  app.directive('hello', function () {
+	    return {
+	      restrict: 'E',
+	      scope: {},
+	      replace: true,
+	      templateUrl: 'directives/hello.tpl.html',
+	      controller: 'HelloCtrl',
+	      link: function ($scope, $element) {
+	        console.warn('my directive');
+	      }
+	    };
+	  });
+	};
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function(app) {
+	  __webpack_require__(6)(app);
+	};
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function(app) {
+	  app.controller('HelloCtrl', function ($scope) {
+	    $scope.name = 'Andrey';
+	  });
+	};
 
 /***/ }
 /******/ ]);
